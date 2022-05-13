@@ -5,6 +5,7 @@
  * `quotes` array 
 ***/
 
+// Assign five quotes as objects to an array
 var quotes = [ {
     quote: "Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.",
     writter: "Patrick McKenzie",
@@ -45,7 +46,7 @@ var quotes = [ {
 /***
  * `getRandomQuote` function
 ***/
-
+// Get a random number but not the previous one to make the quote won't repeat
 var randomNumber = 0;
 function getRandomQuote() {
     let newRandomNumber = Math.floor(Math.random() * 5);
@@ -62,15 +63,19 @@ function getRandomQuote() {
 ***/
 function printQuote() {
     getRandomQuote();
+    // Get the quote <p> and change the quote to the selected one
     var selectedQuote = quotes[randomNumber];
     document.getElementsByClassName("quote")[0].innerHTML = selectedQuote.quote;
+    // Get the source <p> and clean it than add the needed part
     var sourceHolder = document.getElementsByClassName("source")[0];
-    console.log(sourceHolder);
     sourceHolder.innerHTML = "";
+    // Add writter
     sourceHolder.innerHTML += selectedQuote.writter;
+    // Add source if existent
     if (selectedQuote.source != "") {
         sourceHolder.innerHTML += '<span class="citation">' + selectedQuote.source + '</span>';
     }
+    // Add year if existent
     if (selectedQuote.year != "") {
         sourceHolder.innerHTML += '<span class="year">' + selectedQuote.year + '</span>';
     }
@@ -82,5 +87,5 @@ function printQuote() {
  * The code will look like the following. You need to complete it.
 
 ***/
-
+// Click listener, but we don't use even now
 document.getElementById('load-quote').addEventListener("click", printQuote);
